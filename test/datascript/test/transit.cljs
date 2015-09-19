@@ -1,7 +1,7 @@
 (ns datascript.test.transit
   (:require
     [datascript.transit :as dt]
-    [datascript :as d]
+    [datascript.core :as d]
     [cljs.test :refer-macros [is deftest]]))
 
 

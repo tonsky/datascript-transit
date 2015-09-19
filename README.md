@@ -8,15 +8,15 @@ This library enables reading and writing [DataScript](https://github.com/tonsky/
 Add this to your `project.clj`:
 
 ```clj
-[datascript "0.12.1"]
-[datascript-transit "0.1.0"]
+[datascript "0.13.0"]
+[datascript-transit "0.2.0"]
 ```
 
 If you want to use another transit version:
 
 ```clj
-[datascript "0.12.1"]
-[datascript-transit "0.1.0"
+[datascript "0.13.0"]
+[datascript-transit "0.2.0"
   :exclusions [com.cognitect/transit-clj
                com.cognitect/transit-cljs]
 [com.cognitect/transit-clj  "0.8.281"]
@@ -28,7 +28,7 @@ If the only custom transit handler you need is DataScript, just use functions fr
 ```clj
 (require '[datascript.transit :as dt])
 
-(-> (datascript/empty-db)
+(-> (datascript.core/empty-db)
     (dt/write-transit-str) ;; => string
     (dt/read-transit-str)) ;; => DataScript DB
 ```
@@ -42,6 +42,10 @@ datascript.transit/write-handlers
 
 
 ## Changes
+
+### 0.2.0
+
+Updated to `[datascript 0.13.0]`
 
 ### 0.1.0
 

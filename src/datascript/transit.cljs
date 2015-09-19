@@ -1,26 +1,27 @@
 (ns datascript.transit
   (:require
-    [datascript :as d]
-    [datascript.core :as dc]
-    [datascript.btset :as db]
+    [datascript.core :as d]
+    [datascript.db   :as db]
+    [datascript.btset :as bt]
     [cognitect.transit :as t]))
 
 
 (def read-handlers
-  { "u"                uuid  ;; https://github.com/cognitect/transit-cljs/pull/10
-    "datascript/DB"    dc/db-from-reader
-    "datascript/Datom" dc/datom-from-reader })
+  { "u"                uuid  ;; favor ClojureScript UUIDs instead of Transit UUIDs
+                             ;; https://github.com/cognitect/transit-cljs/pull/10
+    "datascript/DB"    db/db-from-reader
+    "datascript/Datom" db/datom-from-reader })
 
 
 (def write-handlers
-  { dc/DB    (t/write-handler (constantly "datascript/DB")
+  { db/DB    (t/write-handler (constantly "datascript/DB")
                (fn [db]
                  { :schema (:schema db)
                    :datoms (:eavt db) }))
-    dc/Datom (t/write-handler (constantly "datascript/Datom")
+    db/Datom (t/write-handler (constantly "datascript/Datom")
                (fn [d]
                  [(.-e d) (.-a d) (.-v d) (.-tx d)]))
-    db/BTSet (t/ListHandler.) })
+    bt/BTSet (t/ListHandler.) })
 
 
 (defn read-transit-str [s]

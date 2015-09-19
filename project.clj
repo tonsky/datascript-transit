@@ -1,4 +1,4 @@
-(defproject datascript-transit "0.1.0"
+(defproject datascript-transit "0.2.0"
   :description "Transit handlers for DataScript database and datoms"
   :license     { :name "Eclipse"
                  :url  "http://www.eclipse.org/legal/epl-v10.html" }
@@ -8,7 +8,7 @@
   :dependencies
   [ [org.clojure/clojure        "1.7.0"   :scope "provided"]
     [org.clojure/clojurescript  "1.7.122" :scope "provided"]
-    [datascript                 "0.12.1"  :scope "provided"]
+    [datascript                 "0.13.0"  :scope "provided"]
     [com.cognitect/transit-clj  "0.8.281"]
     [com.cognitect/transit-cljs "0.8.225"] ]
   

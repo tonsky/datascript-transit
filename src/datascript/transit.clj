@@ -1,17 +1,17 @@
 (ns datascript.transit
   (:require
-    [datascript :as d]
-    [datascript.core :as dc]
+    [datascript.core :as d]
+    [datascript.db   :as db]
     [cognitect.transit :as t])
   (:import
-    [datascript.core DB Datom]
+    [datascript.db DB Datom]
     [datascript.btset BTSet]
     [java.io ByteArrayInputStream ByteArrayOutputStream]))
 
 
 (def read-handlers
-  { "datascript/DB"    (t/read-handler dc/db-from-reader)
-    "datascript/Datom" (t/read-handler dc/datom-from-reader) })
+  { "datascript/DB"    (t/read-handler db/db-from-reader)
+    "datascript/Datom" (t/read-handler db/datom-from-reader) })
 
 
 (def write-handlers
