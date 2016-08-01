@@ -21,7 +21,9 @@
                 :datoms (:eavt db) }))
     Datom (t/write-handler "datascript/Datom"
             (fn [^Datom d]
-              [(.-e d) (.-a d) (.-v d) (.-tx d)]))
+              (if (.-added d)
+                [(.-e d) (.-a d) (.-v d) (.-tx d)]
+                [(.-e d) (.-a d) (.-v d) (.-tx d) false])))
     BTSet (get t/default-write-handlers java.util.List) })
 
 

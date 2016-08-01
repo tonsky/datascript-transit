@@ -20,7 +20,9 @@
                    :datoms (:eavt db) }))
     db/Datom (t/write-handler (constantly "datascript/Datom")
                (fn [d]
-                 [(.-e d) (.-a d) (.-v d) (.-tx d)]))
+                 (if (.-added d)
+                   [(.-e d) (.-a d) (.-v d) (.-tx d)]
+                   [(.-e d) (.-a d) (.-v d) (.-tx d) false])))
     bt/BTSet (t/ListHandler.) })
 
 
