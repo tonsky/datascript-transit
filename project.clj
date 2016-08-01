@@ -8,8 +8,8 @@
   :dependencies
   [ [org.clojure/clojure        "1.8.0"  :scope "provided"]
     [org.clojure/clojurescript  "1.9.89" :scope "provided"]
-    [datascript                 "0.15.1" :scope "provided"]
-    [com.cognitect/transit-clj  "0.8.285"]
+    [datascript                 "0.15.2" :scope "provided"]
+    [com.cognitect/transit-clj  "0.8.288"]
     [com.cognitect/transit-cljs "0.8.239"] ]
   
   
