@@ -1,4 +1,4 @@
-(defproject datascript-transit "0.2.1"
+(defproject datascript-transit "0.2.2"
   :description "Transit handlers for DataScript database and datoms"
   :license     { :name "Eclipse"
                  :url  "http://www.eclipse.org/legal/epl-v10.html" }

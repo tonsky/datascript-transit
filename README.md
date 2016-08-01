@@ -8,18 +8,18 @@ This library enables reading and writing [DataScript](https://github.com/tonsky/
 Add this to your `project.clj`:
 
 ```clj
-[datascript "0.15.1"]
-[datascript-transit "0.2.1"]
+[datascript "0.15.2"]
+[datascript-transit "0.2.2"]
 ```
 
 If you want to use another transit version:
 
 ```clj
-[datascript "0.15.1"]
-[datascript-transit "0.2.1"
+[datascript "0.15.2"]
+[datascript-transit "0.2.2"
   :exclusions [com.cognitect/transit-clj
                com.cognitect/transit-cljs]
-[com.cognitect/transit-clj  "0.8.285"]
+[com.cognitect/transit-clj  "0.8.288"]
 [com.cognitect/transit-cljs "0.8.239"]
 ```
 
@@ -42,6 +42,10 @@ datascript.transit/write-handlers
 
 
 ## Changes
+
+### 0.2.2
+
+Preserve `added` flag on Datoms (you can now correctly serialize transaction data)
 
 ### 0.2.1
 
