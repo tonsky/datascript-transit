@@ -5,7 +5,7 @@
     [cognitect.transit :as t])
   (:import
     [datascript.db DB Datom]
-    [datascript.btset BTSet]
+    [me.tonsky.persistent_sorted_set PersistentSortedSet]
     [java.io ByteArrayInputStream ByteArrayOutputStream]))
 
 
@@ -21,10 +21,10 @@
                 :datoms (:eavt db) }))
     Datom (t/write-handler "datascript/Datom"
             (fn [^Datom d]
-              (if (.-added d)
-                [(.-e d) (.-a d) (.-v d) (.-tx d)]
-                [(.-e d) (.-a d) (.-v d) (.-tx d) false])))
-    BTSet (get t/default-write-handlers java.util.List) })
+              (if (db/datom-added d)
+                [(.-e d) (.-a d) (.-v d) (db/datom-tx d)]
+                [(.-e d) (.-a d) (.-v d) (db/datom-tx d) false])))
+    PersistentSortedSet (get t/default-write-handlers java.util.List) })
 
 
 (defn read-transit [is]

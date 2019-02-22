@@ -2,7 +2,7 @@
   (:require
     [datascript.core :as d]
     [datascript.db   :as db]
-    [datascript.btset :as bt]
+    [me.tonsky.persistent-sorted-set :as pss]
     [cognitect.transit :as t]))
 
 
@@ -20,10 +20,10 @@
                    :datoms (:eavt db) }))
     db/Datom (t/write-handler (constantly "datascript/Datom")
                (fn [d]
-                 (if (.-added d)
-                   [(.-e d) (.-a d) (.-v d) (.-tx d)]
-                   [(.-e d) (.-a d) (.-v d) (.-tx d) false])))
-    bt/BTSet (t/ListHandler.) })
+                 (if (db/datom-added d)
+                   [(.-e d) (.-a d) (.-v d) (db/datom-tx d)]
+                   [(.-e d) (.-a d) (.-v d) (db/datom-tx d) false])))
+    pss/BTSet (t/ListHandler.) })
 
 
 (defn read-transit-str [s]
